@@ -3,6 +3,8 @@ JWT令牌：
     Header：声明类型（JWT）和签名算法（HS256/RS256…）
     Payload：业务数据（userId、role、exp 等）
     Signature：防篡改校验，确保Token未被修改
+md5加密技术的使用方法：
+    DigestUtils.md5DigestAsHex("123456".getBytes());
 swagger和yapi都是与接口文档有关，区别在于：
     yapi是设计阶段使用的工具，管理和维护接口
     swagger是在开发阶段使用的框架，帮助后端开发
@@ -11,3 +13,9 @@ swagger常用注解：
     @ApiModel:用在类上，例如entity，DTO，VO
     @ApiModelProperty:用在属性上，描述属性信息
     @ApiOperation:用在方法上，例如Controller的方法，说明方法的用途，作用
+
+day 02
+DTO:封装用户可传递的参数对象，VO是服务端筛选返回的数据对象，entity是数据库所有字段属性对象
+@RequestBody:把json、xml类型的数据封装成一个java对象
+long型的数据后面要加一个L
+客户端发送的每一次请求都是单独的一个线程（多线程的知识点要看）
