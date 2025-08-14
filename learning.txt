@@ -1,26 +1,33 @@
 day 01
-JWT令牌：
+1,JWT令牌：
     Header：声明类型（JWT）和签名算法（HS256/RS256…）
     Payload：业务数据（userId、role、exp 等）
     Signature：防篡改校验，确保Token未被修改
-md5加密技术的使用方法：
+2,md5加密技术的使用方法：
     DigestUtils.md5DigestAsHex("123456".getBytes());
-swagger和yapi都是与接口文档有关，区别在于：
+3,swagger和yapi都是与接口文档有关，区别在于：
     yapi是设计阶段使用的工具，管理和维护接口
     swagger是在开发阶段使用的框架，帮助后端开发
-swagger常用注解：
+4,swagger常用注解：
     @Api:用在类上，例如Controller，表示对类的说明
     @ApiModel:用在类上，例如entity，DTO，VO
     @ApiModelProperty:用在属性上，描述属性信息
     @ApiOperation:用在方法上，例如Controller的方法，说明方法的用途，作用
 
 day 02
-DTO:封装用户可传递的参数对象，VO是服务端筛选返回的数据对象，entity是数据库所有字段属性对象
-@RequestBody:把json、xml类型的数据封装成一个java对象
-long型的数据后面要加一个L
-客户端发送的每一次请求都是单独的一个线程（多线程的知识点要看）
-将JSON解析为java对象的过程称为“从JSON反序列化Java对象”
-将Java对象生成JSON对象的过程称为“序列化Java对象到JSON”
-对日期进行格式化：
+1,DTO:封装用户可传递的参数对象，VO是服务端筛选返回的数据对象，entity是数据库所有字段属性对象
+2,@RequestBody:把json、xml类型的数据封装成一个java对象
+3,long型的数据后面要加一个L
+4,客户端发送的每一次请求都是单独的一个线程（多线程的知识点要看）
+5,将JSON解析为java对象的过程称为“从JSON反序列化Java对象”
+  将Java对象生成JSON对象的过程称为“序列化Java对象到JSON”
+6,对日期进行格式化：
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")是对单个日期进行格式化，用在哪里就在哪上面加
     在配置类中扩展Spring mvc消息转换器并为其设置一个对象转换器，将java数据转换为序列化为json数据，然后将自己的消息转换器添加到容器中
+7,@PathVariable(value="xxx")是指在路径上的占位符，xxx将参数名与路径名相匹配
+8,在实体类上加@Builder后定义对象可以这么写：
+    Employee employee = Employee.builder()
+            .status(status)
+            .id(id)
+            .build();
+9,parameterType: 接口中方法参数的类型， 类型的完全限定名或别名。
