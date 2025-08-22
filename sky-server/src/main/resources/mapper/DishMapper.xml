@@ -7,4 +7,31 @@
         insert into dish(name, category_id, price, image, description)
         values (#{name}, #{categoryId}, #{price}, #{image}, #{description})
     </insert>
+
+    <delete id="deleteByIds">
+        delete from dish
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="pageQuery" resultType="com.sky.vo.DishVO">
+        select dish.*, category.name as categoryName
+        from dish
+        left join category
+        on dish.category_id = category.id
+        <where>
+            <if test="name != null">
+                dish.name like concat('%',#{name},'%')
+            </if>
+            <if test="categoryId != null">
+                and dish.category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and dish.status = #{status}
+            </if>
+        </where>
+        order by dish.update_time desc
+    </select>
 </mapper>
